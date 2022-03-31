@@ -10,7 +10,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case REQUEST_CURRENCIES:
     return { isFetching: true };
   case RECEIVE_CURRENCIES:
-    return { currencies: action.payload, isFetching: false };
+    return { currencies: Object.keys(action.payload), isFetching: false };
   default:
     return state;
   }

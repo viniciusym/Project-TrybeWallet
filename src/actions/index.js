@@ -18,7 +18,7 @@ export function fetchCurrencies() {
     const response = await fetch(endpoint);
     const data = await response.json();
     delete data.USDT;
-    dispatch(receiveCurrencies(Object.keys(data)));
+    dispatch(receiveCurrencies(data));
   };
 }
 
