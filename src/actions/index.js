@@ -2,6 +2,7 @@ export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const REQUEST_CURRENCIES = 'REQUEST_CURRENCIES';
 export const RECEIVE_CURRENCIES = 'RECEIVE_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const fetchingCurrencies = () => ({
   type: REQUEST_CURRENCIES,
@@ -30,5 +31,10 @@ export const addExpense = (payload) => ({
 
 export const saveEmail = (payload) => ({
   type: SAVE_EMAIL,
+  payload,
+});
+
+export const deleteExpenses = (payload) => ({
+  type: DELETE_EXPENSE,
   payload,
 });

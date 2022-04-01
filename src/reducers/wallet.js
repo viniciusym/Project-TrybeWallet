@@ -1,7 +1,8 @@
 import {
   REQUEST_CURRENCIES,
   RECEIVE_CURRENCIES,
-  ADD_EXPENSE } from '../actions';
+  ADD_EXPENSE,
+  DELETE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -27,6 +28,11 @@ const wallet = (state = INITIAL_STATE, action) => {
     return { isFetching: true, ...state };
   case RECEIVE_CURRENCIES:
     return { ...state, currencies: Object.keys(action.payload), isFetching: false };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense, index) => index !== action.payload),
+    };
   default:
     return state;
   }
