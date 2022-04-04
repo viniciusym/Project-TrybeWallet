@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import convertExpense from '../convertExpense/convertExpense';
-import { deleteExpenses } from '../actions';
+import { deleteExpenses, expenseToEdit } from '../actions';
 
 class ExpensesList extends React.Component {
   render() {
-    const { expenses, deleteExpense } = this.props;
+    const { expenses, deleteExpense, expenseEdit, teste } = this.props;
     return (
       <table>
         <thead>
@@ -45,7 +45,16 @@ class ExpensesList extends React.Component {
                 <td>{ convertExpense(expense) }</td>
                 <td>Real</td>
                 <td>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={ () => {
+                      expenseEdit(expense);
+                      setTimeout(() => {
+                        teste();
+                      }, 100);
+                    } }
+                    data-testid="edit-btn"
+                  >
                     Editar
                   </button>
                   <button
@@ -68,6 +77,8 @@ class ExpensesList extends React.Component {
 ExpensesList.propTypes = {
   expenses: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteExpense: PropTypes.func.isRequired,
+  expenseEdit: PropTypes.func.isRequired,
+  teste: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -76,6 +87,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteExpense: (expenseId) => dispatch(deleteExpenses(expenseId)),
+  expenseEdit: (expense) => dispatch(expenseToEdit(expense)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExpensesList);

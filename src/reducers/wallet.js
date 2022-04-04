@@ -2,12 +2,18 @@ import {
   REQUEST_CURRENCIES,
   RECEIVE_CURRENCIES,
   ADD_EXPENSE,
-  DELETE_EXPENSE } from '../actions';
+  DELETE_EXPENSE,
+  EDIT_EXPENSE,
+  EXPENSE_TO_EDIT,
+  START_EDITING,
+} from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
   expenses: [],
   totalValue: 0,
+  editingExpense: false,
+  expenseToEdit: {},
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
@@ -32,6 +38,29 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       expenses: state.expenses.filter((expense, index) => index !== action.payload),
+    };
+  case EDIT_EXPENSE: {
+    console.log(action.payload.expense);
+    const expenseIndex = action.payload.expense.id;
+    const arrayExpensesToEdit = [...state.expenses];
+    arrayExpensesToEdit.splice(expenseIndex, 1, action.payload.expense);
+    return {
+      ...state,
+      expenses: arrayExpensesToEdit,
+      expenseToEdit: {},
+      editingExpense: false,
+    };
+  }
+  case START_EDITING:
+    return {
+      ...state,
+      editingExpense: true,
+    };
+  case EXPENSE_TO_EDIT:
+    return {
+      ...state,
+      expenseToEdit: action.payload,
+      editingExpense: true,
     };
   default:
     return state;

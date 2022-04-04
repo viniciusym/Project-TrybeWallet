@@ -3,6 +3,9 @@ export const REQUEST_CURRENCIES = 'REQUEST_CURRENCIES';
 export const RECEIVE_CURRENCIES = 'RECEIVE_CURRENCIES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const EXPENSE_TO_EDIT = 'EXPENSE_TO_EDIT';
+export const START_EDITING = 'START_EDITING';
 
 export const fetchingCurrencies = () => ({
   type: REQUEST_CURRENCIES,
@@ -36,5 +39,20 @@ export const saveEmail = (payload) => ({
 
 export const deleteExpenses = (payload) => ({
   type: DELETE_EXPENSE,
+  payload,
+});
+
+export const editExpenses = (payload) => ({
+  type: EDIT_EXPENSE,
+  payload,
+});
+
+export const expenseToEdit = (payload) => ({
+  type: EXPENSE_TO_EDIT,
+  payload,
+});
+
+export const startEditing = (payload) => ({
+  type: START_EDITING,
   payload,
 });

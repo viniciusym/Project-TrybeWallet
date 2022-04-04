@@ -7,17 +7,32 @@ import ExpenseForm from '../components/ExpenseForm';
 import ExpensesList from '../components/ExpensesList';
 
 class Wallet extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      teste: '',
+    };
+  }
+
   componentDidMount() {
     const { getCurrencies } = this.props;
     getCurrencies();
   }
 
+  teste2 = (func) => {
+    this.setState({
+      teste: func,
+    });
+  }
+
   render() {
+    const { teste } = this.state;
     return (
       <div>
         <Header />
-        <ExpenseForm />
-        <ExpensesList />
+        <ExpenseForm teste2={ this.teste2 } />
+        <ExpensesList teste={ teste } />
       </div>
     );
   }
