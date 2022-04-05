@@ -19,8 +19,8 @@ class ExpenseForm extends React.Component {
   }
 
   componentDidMount() {
-    const { teste2 } = this.props;
-    teste2(this.teste3);
+    const { transferFormData } = this.props;
+    transferFormData(this.getStateWhenEditing);
     this.setDefaultState();
   }
 
@@ -34,7 +34,7 @@ class ExpenseForm extends React.Component {
     });
   }
 
-  teste3 = () => {
+  getStateWhenEditing = () => {
     const { expenseToEdit: { value, description, currency, method, tag } } = this.props;
     this.setState({
       value,
@@ -52,7 +52,7 @@ class ExpenseForm extends React.Component {
     });
   }
 
-  convertAndAddExpense = async () => {
+  addExpense = async () => {
     const { addExpenses } = this.props;
     const { state } = this;
     const data = await getCurrencies();
@@ -159,7 +159,7 @@ class ExpenseForm extends React.Component {
             value={ editingExpense ? 'Editar despesa' : 'Adicionar despesa' }
             onClick={ () => (
               editingExpense ? this.saveEditExpense(expenseToEdit)
-                : this.convertAndAddExpense(value, currency)
+                : this.addExpense(value, currency)
             ) }
           />
         </form>
@@ -174,7 +174,7 @@ ExpenseForm.propTypes = {
   editingExpense: PropTypes.bool.isRequired,
   expenseToEdit: PropTypes.objectOf(PropTypes.string).isRequired,
   editExpense: PropTypes.func.isRequired,
-  teste2: PropTypes.func.isRequired,
+  transferFormData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

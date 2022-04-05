@@ -40,7 +40,6 @@ const wallet = (state = INITIAL_STATE, action) => {
       expenses: state.expenses.filter((expense, index) => index !== action.payload),
     };
   case EDIT_EXPENSE: {
-    console.log(action.payload.expense);
     const expenseIndex = action.payload.expense.id;
     const arrayExpensesToEdit = [...state.expenses];
     arrayExpensesToEdit.splice(expenseIndex, 1, action.payload.expense);

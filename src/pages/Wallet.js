@@ -11,7 +11,7 @@ class Wallet extends React.Component {
     super(props);
 
     this.state = {
-      teste: '',
+      functionToTransferData: '',
     };
   }
 
@@ -20,19 +20,19 @@ class Wallet extends React.Component {
     getCurrencies();
   }
 
-  teste2 = (func) => {
+  transferFormData = (func) => {
     this.setState({
-      teste: func,
+      functionToTransferData: func,
     });
   }
 
   render() {
-    const { teste } = this.state;
+    const { functionToTransferData } = this.state;
     return (
       <div>
         <Header />
-        <ExpenseForm teste2={ this.teste2 } />
-        <ExpensesList teste={ teste } />
+        <ExpenseForm transferFormData={ this.transferFormData } />
+        <ExpensesList functionToTransferData={ functionToTransferData } />
       </div>
     );
   }
