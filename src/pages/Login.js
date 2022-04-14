@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { saveEmail } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -57,36 +58,41 @@ class Login extends React.Component {
   render() {
     const { email, password, isLoginDisabled } = this.state;
     return (
-      <form>
-        <label htmlFor="email">
+      <div className="login-page">
+        <form className="login-form">
+          <label htmlFor="email" className="login-label">
+            <input
+              className="login-input"
+              type="text"
+              name="email"
+              id="email"
+              value={ email }
+              data-testid="email-input"
+              placeholder="Email"
+              onChange={ (event) => this.handleChange(event) }
+            />
+          </label>
+          <label htmlFor="password" className="login-label">
+            <input
+              className="login-input"
+              type="password"
+              name="password"
+              id="password"
+              value={ password }
+              data-testid="password-input"
+              placeholder="senha"
+              onChange={ (event) => this.handleChange(event) }
+            />
+          </label>
           <input
-            type="text"
-            name="email"
-            id="email"
-            value={ email }
-            data-testid="email-input"
-            placeholder="Email"
-            onChange={ (event) => this.handleChange(event) }
+            type="button"
+            className="login-button"
+            value="Entrar"
+            disabled={ isLoginDisabled }
+            onClick={ this.login }
           />
-        </label>
-        <label htmlFor="password">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={ password }
-            data-testid="password-input"
-            placeholder="senha"
-            onChange={ (event) => this.handleChange(event) }
-          />
-        </label>
-        <input
-          type="button"
-          value="Entrar"
-          disabled={ isLoginDisabled }
-          onClick={ this.login }
-        />
-      </form>
+        </form>
+      </div>
     );
   }
 }

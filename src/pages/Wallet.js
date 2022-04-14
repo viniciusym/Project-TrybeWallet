@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import { fetchCurrencies } from '../actions';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpensesList from '../components/ExpensesList';
+import './Wallet.css';
 
 class Wallet extends React.Component {
   constructor(props) {

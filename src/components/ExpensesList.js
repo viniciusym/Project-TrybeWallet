@@ -10,7 +10,7 @@ class ExpensesList extends React.Component {
     return (
       <table>
         <thead>
-          <tr>
+          <tr className="expense-list-table head">
             <th>Descrição</th>
             <th>Tag</th>
             <th>Método de pagamento</th>
@@ -35,37 +35,40 @@ class ExpensesList extends React.Component {
             } = expense;
             const { ask, name } = exchangeRates[currency];
             return (
-              <tr key={ id }>
-                <td>{ description }</td>
-                <td>{ tag }</td>
-                <td>{ method }</td>
-                <td>{ Number(value).toFixed(2) }</td>
-                <td>{ name }</td>
-                <td>{ Number(ask).toFixed(2) }</td>
-                <td>{ convertExpense(expense) }</td>
-                <td>Real</td>
-                <td>
-                  <button
-                    type="button"
-                    onClick={ () => {
-                      expenseEdit(expense);
-                      setTimeout(() => {
-                        functionToTransferData();
-                      }, 100);
-                    } }
-                    data-testid="edit-btn"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    type="button"
-                    onClick={ () => deleteExpense(id) }
-                    data-testid="delete-btn"
-                  >
-                    Excluir
-                  </button>
-                </td>
-              </tr>
+              <>
+                <tr key={ id } className="expense-list-table">
+                  <td>{ description }</td>
+                  <td>{ tag }</td>
+                  <td>{ method }</td>
+                  <td>{ Number(value).toFixed(2) }</td>
+                  <td>{ name }</td>
+                  <td>{ Number(ask).toFixed(2) }</td>
+                  <td>{ convertExpense(expense) }</td>
+                  <td>Real</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={ () => {
+                        expenseEdit(expense);
+                        setTimeout(() => {
+                          functionToTransferData();
+                        }, 100);
+                      } }
+                      data-testid="edit-btn"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={ () => deleteExpense(id) }
+                      data-testid="delete-btn"
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+                <div className="break-line" />
+              </>
             );
           }) }
         </tbody>

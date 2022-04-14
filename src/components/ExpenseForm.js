@@ -89,10 +89,11 @@ class ExpenseForm extends React.Component {
     const { description, value, currency, method, tag } = this.state;
     return (
       <div>
-        <form>
-          <label htmlFor="value">
+        <form className="expense-form">
+          <label htmlFor="value" className="expense-form-label">
             Valor
             <input
+              className="expense-form-input-text"
               type="number"
               name="value"
               id="value"
@@ -101,9 +102,10 @@ class ExpenseForm extends React.Component {
               onChange={ (event) => this.handleChange(event) }
             />
           </label>
-          <label htmlFor="description">
+          <label htmlFor="description" className="expense-form-label">
             Descrição
             <input
+              className="expense-form-input-text"
               value={ description }
               type="text"
               name="description"
@@ -112,7 +114,7 @@ class ExpenseForm extends React.Component {
               onChange={ (event) => this.handleChange(event) }
             />
           </label>
-          <label htmlFor="currency">
+          <label htmlFor="currency" className="expense-form-label">
             Moeda
             <select
               name="currency"
@@ -128,7 +130,8 @@ class ExpenseForm extends React.Component {
               ))}
             </select>
           </label>
-          <label htmlFor="method">
+          <label htmlFor="method" className="expense-form-label">
+            Método
             <select
               value={ method }
               name="method"
@@ -140,6 +143,9 @@ class ExpenseForm extends React.Component {
               <option value="Cartão de crédito">Cartão de crédito</option>
               <option value="Cartão de débito">Cartão de débito</option>
             </select>
+          </label>
+          <label htmlFor="tag" className="expense-form-label">
+            Tag
             <select
               name="tag"
               value={ tag }
@@ -161,6 +167,7 @@ class ExpenseForm extends React.Component {
               editingExpense ? this.saveEditExpense(expenseToEdit)
                 : this.addExpense(value, currency)
             ) }
+            className="expense-form-button"
           />
         </form>
       </div>

@@ -21,7 +21,7 @@ class Header extends React.Component {
   render() {
     const { email, expenses } = this.props;
     return (
-      <div>
+      <div className="wallet-header">
         <div data-testid="email-field">
           Email:
           { email }
@@ -30,6 +30,7 @@ class Header extends React.Component {
           Câmbio: BRL
         </div>
         <div data-testid="total-field">
+          Despesa total:
           { this.convertExpenses(expenses) }
         </div>
       </div>
