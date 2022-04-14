@@ -60,7 +60,7 @@ class ExpensesList extends React.Component {
                     </button>
                     <button
                       type="button"
-                      onClick={ () => deleteExpense(id) }
+                      onClick={ () => deleteExpense(expense) }
                       data-testid="delete-btn"
                     >
                       Excluir
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteExpense: (expenseId) => dispatch(deleteExpenses(expenseId)),
+  deleteExpense: (expense) => dispatch(deleteExpenses(expense)),
   expenseEdit: (expense) => dispatch(expenseToEdit(expense)),
 });
 

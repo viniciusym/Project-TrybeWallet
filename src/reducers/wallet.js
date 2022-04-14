@@ -37,7 +37,7 @@ const wallet = (state = INITIAL_STATE, action) => {
   case DELETE_EXPENSE:
     return {
       ...state,
-      expenses: state.expenses.filter((expense, index) => index !== action.payload),
+      expenses: state.expenses.filter((expense) => expense !== action.payload),
     };
   case EDIT_EXPENSE: {
     const expenseIndex = action.payload.expense.id;
